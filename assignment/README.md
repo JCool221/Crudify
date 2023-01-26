@@ -90,7 +90,7 @@ Create a virtual called `friendCount` that retrieves the length of the user's `f
 
 ---
 
-**Thought_(replaces_application)**:
+**Thought**:
 
 * `thoughtText`
   * String
@@ -115,7 +115,7 @@ Create a virtual called `reactionCount` that retrieves the length of the thought
 
 ---
 
-**Reaction_(replaces_tag)** (SCHEMA ONLY)
+**Reaction** (SCHEMA ONLY)
 
 * `reactionId`
   * Use Mongoose's ObjectId data type
