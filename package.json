@@ -1,7 +1,7 @@
 {
-  "name": "26-Stu_Mongoose-CRUD",
+  "name": "Crudify",
   "version": "1.0.0",
-  "description": "Reverse engineer developer activity for CRUD methods in Mongoose",
+  "description": "CRUD api in Mongoose",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
