@@ -2,20 +2,23 @@ const { User, Thought } = require('../models');
 
 module.exports = {
   // Get all users
+  // i would also like this to return the user thoughts
   async getUsers(req, res) {
     try {
-      const users = await User.find();
+      const users = await User.find()
+      .populate('thoughts')
+      .populate('friends');
       return res.json(users);
     } catch (err) {
       return res.status(500).json(err)
     }
   },
   // Get a single user
-// currently not working
   async getSingleUser(req, res) {
     try { 
     const user = await User.findOne({ _id: req.params.userId })
-      .select('-__v')
+    .populate('thoughts')
+    .select('-__v')
       if (!user) {
         return (res.status(404).json({ message: "No user with that Id!"}))
       }
@@ -24,7 +27,22 @@ module.exports = {
       return (res.status(500).json(err))
     }
   },
-
+// update a single user
+async updateUser(req, res) {
+  try{
+    const user = await User.findOneAndUpdate(
+      { _id: req.params.userId},
+      {$set: req.body},
+      {runValidators: true, new: true}
+    );
+    if(!user) {
+      return res.status(404).json({ message: "No user with that Id!"})
+    }
+    return res.json(user);
+  } catch(err) {
+    return res.status(500).json(err)
+  }
+},
   // create a new user
   async createUser(req, res) {
     try {
@@ -52,7 +70,7 @@ module.exports = {
   async addFriend( req,res) {
     try {
       const user = await User.findOneAndUpdate(
-        {_id: req.params.userID},
+        {_id: req.params.userId},
         {$addToSet: {friends: req.body}},
         {runValidators: true, new: true}
         )
@@ -69,8 +87,8 @@ module.exports = {
   async removeFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.params.userID },
-        { $pull: { friends: { friendID: req.params.friendID } } },
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendsId } },
         { runValidators: true, new: true }
       );
       if (!user) {
