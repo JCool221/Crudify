@@ -1,16 +1,20 @@
 const { Schema, Types } = require('mongoose');
 
-const tagSchema = new Schema(
+const reactionSchema = new Schema(
   {
-    tagId: {
+    reactionId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
-    tagBody: {
+    reactionBody: {
       type: String,
       required: true,
       maxlength: 25,
     },
+    // username: {
+    //   type: String,
+    //   required: true,
+    // },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -24,4 +28,4 @@ const tagSchema = new Schema(
   }
 );
 
-module.exports = tagSchema;
+module.exports = reactionSchema;
