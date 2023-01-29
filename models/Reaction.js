@@ -11,10 +11,10 @@ const reactionSchema = new Schema(
       required: true,
       maxlength: 25,
     },
-    // username: {
-    //   type: String,
-    //   required: true,
-    // },
+    username: {
+      type: String,
+      required: true,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
