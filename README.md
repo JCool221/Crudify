@@ -20,7 +20,9 @@ npm install to install packages but there is no front end at this time
 <a name="Usage"></a>
 ## Usage
 
-See attached video for demonstration of the associated routes
+See attached video for demonstration of the associated routes  
+[Demonstration of routes](https://drive.google.com/file/d/1o2vvveYgF91GUDOmZuTV6q_qdFa43ndu/view)  
+[Demonstration that thoughts are deleted along with the associated user](https://drive.google.com/file/d/1IPc2gBYqReu5n-0QeJB1Jj6inFdN67l1/view)  
 
 <a name="Contributing"></a>
 ## Contributing
